@@ -48,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         });
       providers= Arrays.asList(
               new AuthUI.IdpConfig.EmailBuilder().build(),
+
               new AuthUI.IdpConfig.FacebookBuilder().build(),
               new AuthUI.IdpConfig.GoogleBuilder().build()
       );
@@ -70,7 +71,8 @@ public class MainActivity extends AppCompatActivity {
                 IdpResponse response=IdpResponse.fromResultIntent(data);
                 if(resultCode==RESULT_OK){
                     FirebaseUser user= FirebaseAuth.getInstance().getCurrentUser();
-                    Toast.makeText(this, ""+user.getEmail(), Toast.LENGTH_SHORT).show();
+                    startActivity(new Intent(MainActivity.this,Additional_Info.class));
+                    finish();
                 btn_signOut.setEnabled(true);
                 }
                 else{
